@@ -26,7 +26,7 @@ resource "azurerm_key_vault" "sac_key_vault" {
     object_id = ""
 
     key_permissions = ["Delete", "Purge","Create", "Get", "Update"]
-    secret_permissions = ["Delete", "Purge", "Get", "Set", "List"]
+    secret_permissions = ["Delete", "Purge", "Get", "Set", "List"] # oak9: access_policy.secret_permissions should be set to any of ["Get"]
     certificate_permissions = ["Delete", "DeleteIssuers", "Purge", "Create", "Get", "Update"]
   }
 }
