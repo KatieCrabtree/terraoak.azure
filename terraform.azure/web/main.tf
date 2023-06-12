@@ -39,6 +39,7 @@ resource "azurerm_windows_web_app" "sac_windows_web_app" {
   site_config {
     cors {
       allowed_origins = ["*"]
+    # oak9: CORS configuration should only allow requests from trusted origins
     }
     minimum_tls_version = "1.0"
     remote_debugging_enabled = true
