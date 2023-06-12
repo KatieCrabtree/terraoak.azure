@@ -15,7 +15,7 @@ resource "azurerm_storage_account" "sac_storage_account" {
   public_network_access_enabled = true
   account_replication_type = "ZRS"
   infrastructure_encryption_enabled = false
-  enable_https_traffic_only = false
+  enable_https_traffic_only = true
   min_tls_version = "TLS1_2"
 
   network_rules {
