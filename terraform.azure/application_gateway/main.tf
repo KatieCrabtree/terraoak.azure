@@ -66,7 +66,7 @@ resource "azurerm_application_gateway" "sac_application_gateway" {
 
   ssl_policy {
     policy_type = "Custom"
-    min_protocol_version = "TLSv1_1"
+    min_protocol_version = "tlsv1_2"
   }
 
   ssl_certificate {
