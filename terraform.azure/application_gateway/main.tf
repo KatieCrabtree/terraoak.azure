@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "app_gateway_resource_group" {
 # ---------------------------------------------------------------------
 # Application Gateway
 # ---------------------------------------------------------------------
-resource "azurerm_application_gateway" "sac_application_gateway" {
+resource "azurerm_application_gateway" "sac_application_gateway" { # oak9:  should be set to any of TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
   name                = "sac-application-gateway"
   resource_group_name = azurerm_resource_group.app_gateway_resource_group.name
   location            = azurerm_resource_group.app_gateway_resource_group.location
@@ -48,7 +48,7 @@ resource "azurerm_application_gateway" "sac_application_gateway" {
     name                  = "backend-http-settings"
     cookie_based_affinity = "Disabled"
     port                  = 63
-    protocol              = "Http"
+    protocol              = "Https"
     request_timeout       = 20000
     
     connection_draining {
@@ -66,7 +66,7 @@ resource "azurerm_application_gateway" "sac_application_gateway" {
 
   ssl_policy {
     policy_type = "Custom"
-    min_protocol_version = "TLSv1_1"
+    min_protocol_version = "tlsv1_2"
   }
 
   ssl_certificate {
